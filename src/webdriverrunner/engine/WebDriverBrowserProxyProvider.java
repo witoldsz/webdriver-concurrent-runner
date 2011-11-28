@@ -1,6 +1,7 @@
 package webdriverrunner.engine;
 
 import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import webdriverrunner.api.Browser;
@@ -29,8 +30,11 @@ public class WebDriverBrowserProxyProvider {
         @Override
         public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
             Browser browserForCurrentThread = delegate.get();
-            return method.invoke(browserForCurrentThread, args);
+            try {
+                return method.invoke(browserForCurrentThread, args);
+            } catch (InvocationTargetException ite) {
+                throw ite.getCause();
+            }
         }
     };
-    
 }

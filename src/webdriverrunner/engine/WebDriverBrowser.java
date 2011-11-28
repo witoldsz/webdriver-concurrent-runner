@@ -1,7 +1,6 @@
 package webdriverrunner.engine;
 
 import java.util.List;
-import org.bouncycastle.crypto.RuntimeCryptoException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -23,7 +22,7 @@ public class WebDriverBrowser implements Browser {
     public WebElement find(String description, By id) {
         List<WebElement> elements = webDriver.findElements(id);
         if (elements.isEmpty()) {
-            throw new RuntimeCryptoException("Cannot find " + description);
+            throw new RuntimeException("Cannot find " + description);
         }
         return elements.get(0);
     }
