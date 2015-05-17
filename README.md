@@ -1,3 +1,9 @@
+Disclaimer
+==========
+
+This is an old library, I keep in just as a memento of ancient times. It might be a good source
+of wisdom for archaeologists or someone interested in Selenium WebDriver adapters, customizations, etc...
+
 Libraries
 =========
 
